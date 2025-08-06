@@ -58,6 +58,4 @@ String result = normaliser.normalise("Java Engineer"); // Returns "Software Engi
 - Handles mixed case and extra whitespace
 - Throws `IllegalArgumentException` for blank or null input
 
-## License
-This project is licensed under the MIT License.
 # FeefoNormaliser
