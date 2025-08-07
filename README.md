@@ -57,6 +57,7 @@ String result = normaliser.normalise("Java Engineer"); // Returns "Software Engi
 - `src/test/java/` - Unit tests
 - `pom.xml` - Maven build configuration
 
+
 ## Example Test Cases
 
 - "Java Engineer" → "Software Engineer"
@@ -66,3 +67,13 @@ String result = normaliser.normalise("Java Engineer"); // Returns "Software Engi
 - "King of Spain" → "No matching job title has been found"
 - Handles mixed case and extra whitespace
 - Throws `IllegalArgumentException` for blank or null input
+
+## Next Steps
+
+Here are some ideas for future improvements and extensions:
+
+- **Concurrency**: Refactor the normalisation logic to support concurrent requests, making the library thread-safe and suitable for high-throughput environments.
+- **Customisable Titles**: Allow users to provide their own list of job titles and configure matching thresholds.
+- **Performance Optimisation**: Profile and optimise the string similarity calculations for large datasets.
+- **Additional Algorithms**: Support other string similarity algorithms
+- **Internationalisation**: Add support for multiple languages and locale-specific job titles.
