@@ -1,4 +1,4 @@
-package org.example;
+package org.feefo.jacroyrees;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,6 +11,10 @@ public class Main {
         System.out.println(normalisedTitle);
 
         jt = "C# engineer";
+        normalisedTitle = n.normalise(jt);
+        System.out.println(normalisedTitle);
+
+        jt = "Accountant";
         normalisedTitle = n.normalise(jt);
         System.out.println(normalisedTitle);
 

@@ -1,27 +1,25 @@
+package org.feefo.jacroyrees;
 
-import org.example.JobTitleNormaliser;
-import org.example.LevenshteinDistanceCalculator;
-import org.example.Normaliser;
-import org.example.StringSimilarityCalculator;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class JobTitleNormaliserTests {
 
-    private Normaliser normaliser = new JobTitleNormaliser(new LevenshteinDistanceCalculator());
+    private final Normaliser normaliser = new JobTitleNormaliser(new LevenshteinDistanceCalculator());
 
     @ParameterizedTest
     @CsvSource({
-        "'Java Engineer', 'Software Engineer'",
-        "'C# Engineer', 'Software Engineer'",
-        "'Accountant', 'Accountant'",
-        "'Chief Accountant', 'Accountant'"
+            "'Java Engineer', 'Software Engineer'",
+            "'C# Engineer', 'Software Engineer'",
+            "'Accountant', 'Accountant'",
+            "'Chief Accountant', 'Accountant'"
     })
     void shouldReturnCorrectJobTitle(String input, String expectedJobTitle) {
         String actualJobTitle = normaliser.normalise(input);
@@ -30,7 +28,7 @@ public class JobTitleNormaliserTests {
 
     @ParameterizedTest
     @CsvSource({
-        "'King of Spain', 'No matching job title has been found'"
+            "'King of Spain', 'No matching job title has been found'"
     })
     void shouldReturnNoMatchFoundForLowScoringInput(String input, String expectedJobTitle) {
         String actualJobTitle = normaliser.normalise(input);
@@ -39,9 +37,9 @@ public class JobTitleNormaliserTests {
 
     @ParameterizedTest
     @CsvSource({
-        "'Accountant', 'Accountant'",
-        "'java EngineEr', 'Software Engineer'",
-        "'CHIEF ARCHITECT', 'Architect'"
+            "'Accountant', 'Accountant'",
+            "'java EngineEr', 'Software Engineer'",
+            "'CHIEF ARCHITECT', 'Architect'"
     })
     void shouldReturnCorrectJobTitle_whenInputHasMixedCase(String input, String expectedJobTitle) {
         String result = normaliser.normalise(input);
@@ -50,9 +48,9 @@ public class JobTitleNormaliserTests {
 
     @ParameterizedTest
     @CsvSource({
-        "'     Accountant     ', 'Accountant'",
-        "'Java Engineer', 'Software Engineer'",
-        "'CHIEF ARCHITECT', 'Architect'"
+            "'     Accountant     ', 'Accountant'",
+            "'Java Engineer', 'Software Engineer'",
+            "'CHIEF ARCHITECT', 'Architect'"
     })
     void shouldReturnCorrectJobTitle_whenInputHasExtraWhiteSpace(String input, String expectedJobTitle) {
         String result = normaliser.normalise(input);

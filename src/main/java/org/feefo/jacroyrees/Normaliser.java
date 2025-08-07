@@ -1,4 +1,4 @@
-package org.example;
+package org.feefo.jacroyrees;
 
 public interface Normaliser {
 
